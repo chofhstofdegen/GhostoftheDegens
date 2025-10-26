@@ -1,1147 +1,1147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$CASPER - Ghost of the Degens</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --spooky-purple: #8a2be2;
-            --ghost-green: #7fffd4;
-            --pumpkin-orange: #ff7518;
-            --blood-red: #ff0033;
-            --witch-purple: #9370db;
-            --dark-bg: #0f051d;
-            --text-glow: #e6e6fa;
-            --tombstone: #2c2c2c;
-            --bat-black: #1a1a1a;
-        } 
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Henny Penny', 'Eater', cursive, 'Courier New', monospace;
-        } 
-
-        @import url('https://fonts.googleapis.com/css2?family=Henny+Penny&family=Eater&display=swap'); 
-
-        body {
-            background-color: var(--dark-bg);
-            color: white;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.3) 0%, transparent 20%),
-                radial-gradient(circle at 90% 60%, rgba(255, 0, 51, 0.25) 0%, transparent 20%),
-                radial-gradient(circle at 50% 80%, rgba(127, 255, 212, 0.15) 0%, transparent 20%),
-                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C27B0' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-        } 
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(15, 5, 29, 0.95);
-            z-index: 1000;
-            border-bottom: 2px solid var(--pumpkin-orange);
-            box-shadow: 0 5px 15px rgba(255, 117, 24, 0.3);
-        } 
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--ghost-green);
-            text-shadow: 0 0 10px var(--ghost-green), 0 0 20px var(--ghost-green);
-            letter-spacing: 2px;
-        } 
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        } 
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            text-shadow: 0 0 5px var(--pumpkin-orange);
-        } 
-
-        .nav-links a:hover {
-            color: var(--pumpkin-orange);
-            text-shadow: 0 0 8px var(--pumpkin-orange);
-        } 
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--pumpkin-orange);
-            transition: width 0.3s ease;
-        } 
-
-        .nav-links a:hover::after {
-            width: 100%;
-        } 
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--ghost-green);
-            font-size: 1.5rem;
-            cursor: pointer;
-        } 
-
-        /* Floating navigation buttons */
-        .floating-nav {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 999;
-        } 
-
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(138, 43, 226, 0.7);
-            border: 2px solid var(--ghost-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(127, 255, 212, 0.5);
-            position: relative;
-            overflow: hidden;
-        } 
-
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: radial-gradient(circle, var(--ghost-green) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        } 
-
-        .nav-btn:hover {
-            background: var(--spooky-purple);
-            transform: scale(1.1);
-            box-shadow: 0 0 15px var(--ghost-green);
-        } 
-
-        .nav-btn:hover::before {
-            opacity: 0.3;
-        } 
-
-        .nav-btn.active {
-            background: var(--ghost-green);
-            color: var(--dark-bg);
-            box-shadow: 0 0 20px var(--ghost-green);
-        } 
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        } 
-
-        .halloween-bats {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: -1;
-        } 
-
-        .bat {
-            position: absolute;
-            font-size: 1.5rem;
-            color: var(--bat-black);
-            animation: fly 15s linear infinite;
-            opacity: 0.7;
-        } 
-
-        .bat:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-        .bat:nth-child(2) { top: 20%; left: 80%; animation-delay: 2s; }
-        .bat:nth-child(3) { top: 60%; left: 10%; animation-delay: 4s; }
-        .bat:nth-child(4) { top: 40%; left: 90%; animation-delay: 6s; }
-        .bat:nth-child(5) { top: 80%; left: 30%; animation-delay: 8s; } 
-
-        .ghost-container {
-            position: relative;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 20px var(--ghost-green));
-        } 
-
-        .ghost {
-            width: 150px;
-            height: 180px;
-            background-color: white;
-            border-radius: 75px 75px 0 0;
-            position: relative;
-            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
-        } 
-
-        .ghost::before, .ghost::after {
-            content: '';
-            position: absolute;
-            background-color: black;
-            width: 20px;
-            height: 25px;
-            border-radius: 50%;
-            top: 60px;
-            animation: blink 4s infinite;
-        } 
-
-        .ghost::before {
-            left: 35px;
-        } 
-
-        .ghost::after {
-            right: 35px;
-        } 
-
-        .ghost-mouth {
-            position: absolute;
-            width: 40px;
-            height: 20px;
-            background-color: black;
-            border-radius: 0 0 20px 20px;
-            top: 100px;
-            left: 55px;
-            animation: talk 3s infinite;
-        } 
-
-        .ghost-bottom {
-            position: absolute;
-            bottom: -10px;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-        } 
-
-        .ghost-bottom span {
-            width: 25px;
-            height: 30px;
-            background-color: white;
-            border-radius: 50%;
-        } 
-
-        h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            color: var(--ghost-green);
-            text-shadow: 0 0 15px var(--ghost-green), 0 0 30px var(--ghost-green);
-            letter-spacing: 3px;
-            animation: textGlow 2s ease-in-out infinite alternate;
-        } 
-
-        .subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: var(--text-glow);
-            text-shadow: 0 0 10px var(--pumpkin-orange);
-        } 
-
-        .countdown {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            background: rgba(138, 43, 226, 0.3);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 2px solid var(--pumpkin-orange);
-            box-shadow: 0 0 15px var(--pumpkin-orange);
-        } 
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        } 
-
-        .countdown-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--blood-red);
-            text-shadow: 0 0 10px var(--blood-red);
-            animation: pulse 1s infinite alternate;
-        } 
-
-        .countdown-label {
-            font-size: 1rem;
-            color: var(--text-glow);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        } 
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        } 
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        } 
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-            z-index: -1;
-        } 
-
-        .btn:hover::before {
-            left: 100%;
-        } 
-
-        .btn-primary {
-            background-color: var(--blood-red);
-            color: white;
-            box-shadow: 0 0 15px var(--blood-red), 0 0 30px rgba(255, 0, 51, 0.5);
-        } 
-
-        .btn-primary:hover {
-            background-color: #ff3366;
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px var(--blood-red), 0 0 40px rgba(255, 0, 51, 0.7);
-        } 
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--ghost-green);
-            border: 2px solid var(--ghost-green);
-            box-shadow: 0 0 15px var(--ghost-green), 0 0 30px rgba(127, 255, 212, 0.5);
-        } 
-
-        .btn-secondary:hover {
-            background-color: var(--ghost-green);
-            color: var(--dark-bg);
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px var(--ghost-green), 0 0 40px rgba(127, 255, 212, 0.7);
-        } 
-
-        .graveyard {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            padding: 0 10%;
-        } 
-
-        .tombstone {
-            width: 80px;
-            height: 100px;
-            background-color: var(--tombstone);
-            border-radius: 10px 10px 0 0;
-            position: relative;
-            animation: wobble 5s infinite ease-in-out;
-            transform-origin: bottom;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        } 
-
-        .tombstone::before {
-            content: 'RIP';
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 0.8rem;
-            text-shadow: 0 0 5px var(--blood-red);
-        } 
-
-        .tombstone:nth-child(2) {
-            animation-delay: 1s;
-        } 
-
-        .tombstone:nth-child(3) {
-            animation-delay: 2s;
-        } 
-
-        .tombstone:nth-child(4) {
-            animation-delay: 3s;
-        } 
-
-        /* General sections */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        } 
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--ghost-green);
-            text-shadow: 0 0 10px var(--ghost-green), 0 0 20px var(--ghost-green);
-            position: relative;
-            letter-spacing: 2px;
-        } 
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--blood-red), transparent);
-            box-shadow: 0 0 10px var(--blood-red);
-        } 
-
-        /* Story */
-        .story-content {
-            background-color: rgba(138, 43, 226, 0.2);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border: 2px solid var(--witch-purple);
-            box-shadow: 0 0 20px rgba(147, 112, 219, 0.5);
-            line-height: 1.6;
-            font-size: 1.2rem;
-            position: relative;
-            overflow: hidden;
-        } 
-
-        .story-content::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: radial-gradient(circle, var(--witch-purple) 0%, transparent 70%);
-            opacity: 0.1;
-            z-index: -1;
-        } 
-
-        .story-content p {
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
-        } 
-
-        /* Tokenomics */
-        .tokenomics-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        } 
-
-        .token-card {
-            background: linear-gradient(145deg, rgba(138, 43, 226, 0.3), rgba(15, 5, 29, 0.7));
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            border: 2px solid var(--pumpkin-orange);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(255, 117, 24, 0.3);
-        } 
-
-        .token-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(127, 255, 212, 0.1) 0%, transparent 70%);
-            transform: rotate(45deg);
-            z-index: -1;
-        } 
-
-        .token-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(255, 117, 24, 0.5);
-        } 
-
-        .token-percentage {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--ghost-green);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px var(--ghost-green);
-        } 
-
-        .token-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: white;
-            text-shadow: 0 0 5px var(--pumpkin-orange);
-        } 
-
-        .token-desc {
-            font-size: 1rem;
-            color: var(--text-glow);
-        } 
-
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        } 
-
-        .feature-card {
-            background-color: rgba(15, 5, 29, 0.7);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 2px solid var(--spooky-purple);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
-        } 
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 117, 24, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        } 
-
-        .feature-card:hover::before {
-            opacity: 1;
-        } 
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.5);
-        } 
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--ghost-green);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px var(--ghost-green);
-            animation: bounce 2s infinite;
-        } 
-
-        .feature-title {
-            font-size: 1.7rem;
-            margin-bottom: 1rem;
-            color: white;
-            text-shadow: 0 0 5px var(--blood-red);
-        } 
-
-        .feature-desc {
-            color: var(--text-glow);
-            line-height: 1.6;
-            font-size: 1.1rem;
-        } 
-
-        /* Roadmap */
-        .roadmap-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        } 
-
-        .roadmap-timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 6px;
-            background: linear-gradient(to bottom, var(--spooky-purple), var(--pumpkin-orange), var(--blood-red));
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px var(--pumpkin-orange);
-        } 
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            width: 50%;
-        } 
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 3rem;
-        } 
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 3rem;
-        } 
-
-        .timeline-content {
-            background-color: rgba(138, 43, 226, 0.3);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 2px solid var(--pumpkin-orange);
-            position: relative;
-            box-shadow: 0 5px 15px rgba(255, 117, 24, 0.3);
-            transition: all 0.3s ease;
-        } 
-
-        .timeline-content:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 25px rgba(255, 117, 24, 0.5);
-        } 
-
-        .timeline-content::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            width: 25px;
-            height: 25px;
-            background-color: var(--ghost-green);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--ghost-green);
-        } 
-
-        .timeline-item:nth-child(odd) .timeline-content::after {
-            right: -42px;
-        } 
-
-        .timeline-item:nth-child(even) .timeline-content::after {
-            left: -42px;
-        } 
-
-        .timeline-date {
-            font-weight: bold;
-            color: var(--ghost-green);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-            text-shadow: 0 0 5px var(--ghost-green);
-        } 
-
-        .timeline-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: white;
-            text-shadow: 0 0 5px var(--blood-red);
-        } 
-
-        .timeline-desc {
-            color: var(--text-glow);
-            font-size: 1.1rem;
-        } 
-
-        /* Community */
-        .community-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        } 
-
-        .community-desc {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            color: var(--text-glow);
-            text-shadow: 0 0 5px var(--pumpkin-orange);
-        } 
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        } 
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1rem 1.5rem;
-            background-color: rgba(138, 43, 226, 0.3);
-            border-radius: 50px;
-            text-decoration: none;
-            color: white;
-            border: 2px solid var(--witch-purple);
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(147, 112, 219, 0.3);
-        } 
-
-        .social-link:hover {
-            background-color: var(--witch-purple);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(147, 112, 219, 0.5);
-        } 
-
-        .social-icon {
-            font-size: 1.7rem;
-        } 
-
-        /* Footer */
-        footer {
-            background-color: rgba(15, 5, 29, 0.95);
-            padding: 2rem;
-            text-align: center;
-            border-top: 2px solid var(--pumpkin-orange);
-            margin-top: 3rem;
-            box-shadow: 0 -5px 15px rgba(255, 117, 24, 0.3);
-        } 
-
-        .footer-text {
-            color: var(--text-glow);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        } 
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        } 
-
-        @keyframes blink {
-            0%, 45%, 55%, 100% {
-                height: 25px;
-            }
-            50% {
-                height: 5px;
-            }
-        } 
-
-        @keyframes talk {
-            0%, 70%, 100% {
-                height: 20px;
-            }
-            75%, 95% {
-                height: 5px;
-            }
-        } 
-
-        @keyframes wobble {
-            0%, 100% {
-                transform: rotate(0deg);
-            }
-            25% {
-                transform: rotate(1deg);
-            }
-            75% {
-                transform: rotate(-1deg);
-            }
-        } 
-
-        @keyframes fly {
-            0% {
-                transform: translateX(-100px) translateY(0);
-            }
-            50% {
-                transform: translateX(calc(100vw + 100px)) translateY(-50px);
-            }
-            100% {
-                transform: translateX(calc(100vw + 100px)) translateY(0);
-            }
-        } 
-
-        @keyframes glow {
-            0% {
-                filter: drop-shadow(0 0 10px var(--ghost-green));
-            }
-            100% {
-                filter: drop-shadow(0 0 25px var(--ghost-green));
-            }
-        } 
-
-        @keyframes textGlow {
-            0% {
-                text-shadow: 0 0 15px var(--ghost-green), 0 0 30px var(--ghost-green);
-            }
-            100% {
-                text-shadow: 0 0 20px var(--ghost-green), 0 0 40px var(--ghost-green), 0 0 60px var(--ghost-green);
-            }
-        } 
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.1);
-            }
-        } 
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        } 
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        } 
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        } 
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: rgba(15, 5, 29, 0.95);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                border-top: 1px solid var(--pumpkin-orange);
-            } 
-
-            .nav-links.active {
-                display: flex;
-            } 
-
-            .mobile-menu-btn {
-                display: block;
-            } 
-
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .countdown {
-                gap: 1rem;
-                padding: 1rem;
-            }
-            
-            .countdown-number {
-                font-size: 2.2rem;
-            } 
-
-            .countdown-label {
-                font-size: 0.8rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .floating-nav {
-                display: none;
-            }
-            
-            .roadmap-timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                left: 0 !important;
-                padding-left: 70px !important;
-                padding-right: 0 !important;
-            }
-            
-            .timeline-content::after {
-                left: -42px !important;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            } 
-
-            .section-title {
-                font-size: 2.2rem;
-            } 
-
-            .tokenomics-cards, .features-grid {
-                grid-template-columns: 1fr;
-            } 
-
-            .story-content {
-                padding: 1.5rem;
-            }
-        } 
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.2rem;
-            } 
-
-            .subtitle {
-                font-size: 1.2rem;
-            } 
-
-            .countdown {
-                flex-wrap: wrap;
-            } 
-
-            .countdown-item {
-                width: 45%;
-                margin-bottom: 1rem;
-            } 
-
-            .section-title {
-                font-size: 1.8rem;
-            } 
-
-            .ghost {
-                width: 120px;
-                height: 150px;
-            } 
-
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$CASPER - Ghost of the Degens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+        
+        :root {
+            --spooky-purple: #8a2be2;
+            --ghost-green: #7fffd4;
+            --pumpkin-orange: #ff7518;
+            --blood-red: #ff0033;
+            --witch-purple: #9370db;
+            --dark-bg: #0f051d;
+            --text-glow: #e6e6fa;
+            --tombstone: #2c2c2c;
+            --bat-black: #1a1a1a;
+        } 
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Henny Penny', cursive, 'Courier New', monospace;
+        } 
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 90% 60%, rgba(255, 0, 51, 0.25) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(127, 255, 212, 0.15) 0%, transparent 20%),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C27B0' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        } 
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(15, 5, 29, 0.95);
+            z-index: 1000;
+            border-bottom: 2px solid var(--pumpkin-orange);
+            box-shadow: 0 5px 15px rgba(255, 117, 24, 0.3);
+        } 
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--ghost-green);
+            text-shadow: 0 0 10px var(--ghost-green), 0 0 20px var(--ghost-green);
+            letter-spacing: 2px;
+        } 
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        } 
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            text-shadow: 0 0 5px var(--pumpkin-orange);
+        } 
+
+        .nav-links a:hover {
+            color: var(--pumpkin-orange);
+            text-shadow: 0 0 8px var(--pumpkin-orange);
+        } 
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--pumpkin-orange);
+            transition: width 0.3s ease;
+        } 
+
+        .nav-links a:hover::after {
+            width: 100%;
+        } 
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ghost-green);
+            font-size: 1.5rem;
+            cursor: pointer;
+        } 
+
+        /* Floating navigation buttons */
+        .floating-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        } 
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(138, 43, 226, 0.7);
+            border: 2px solid var(--ghost-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(127, 255, 212, 0.5);
+            position: relative;
+            overflow: hidden;
+        } 
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, var(--ghost-green) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        } 
+
+        .nav-btn:hover {
+            background: var(--spooky-purple);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--ghost-green);
+        } 
+
+        .nav-btn:hover::before {
+            opacity: 0.3;
+        } 
+
+        .nav-btn.active {
+            background: var(--ghost-green);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--ghost-green);
+        } 
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        } 
+
+        .halloween-bats {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        } 
+
+        .bat {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--bat-black);
+            animation: fly 15s linear infinite;
+            opacity: 0.7;
+        } 
+
+        .bat:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .bat:nth-child(2) { top: 20%; left: 80%; animation-delay: 2s; }
+        .bat:nth-child(3) { top: 60%; left: 10%; animation-delay: 4s; }
+        .bat:nth-child(4) { top: 40%; left: 90%; animation-delay: 6s; }
+        .bat:nth-child(5) { top: 80%; left: 30%; animation-delay: 8s; } 
+
+        .ghost-container {
+            position: relative;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px var(--ghost-green));
+        } 
+
+        .ghost {
+            width: 150px;
+            height: 180px;
+            background-color: white;
+            border-radius: 75px 75px 0 0;
+            position: relative;
+            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+        } 
+
+        .ghost::before, .ghost::after {
+            content: '';
+            position: absolute;
+            background-color: black;
+            width: 20px;
+            height: 25px;
+            border-radius: 50%;
+            top: 60px;
+            animation: blink 4s infinite;
+        } 
+
+        .ghost::before {
+            left: 35px;
+        } 
+
+        .ghost::after {
+            right: 35px;
+        } 
+
+        .ghost-mouth {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background-color: black;
+            border-radius: 0 0 20px 20px;
+            top: 100px;
+            left: 55px;
+            animation: talk 3s infinite;
+        } 
+
+        .ghost-bottom {
+            position: absolute;
+            bottom: -10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        } 
+
+        .ghost-bottom span {
+            width: 25px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+        } 
+
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--ghost-green);
+            text-shadow: 0 0 15px var(--ghost-green), 0 0 30px var(--ghost-green);
+            letter-spacing: 3px;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        } 
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-glow);
+            text-shadow: 0 0 10px var(--pumpkin-orange);
+        } 
+
+        .countdown {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            background: rgba(138, 43, 226, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--pumpkin-orange);
+            box-shadow: 0 0 15px var(--pumpkin-orange);
+        } 
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        } 
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--blood-red);
+            text-shadow: 0 0 10px var(--blood-red);
+            animation: pulse 1s infinite alternate;
+        } 
+
+        .countdown-label {
+            font-size: 1rem;
+            color: var(--text-glow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        } 
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        } 
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        } 
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+            z-index: -1;
+        } 
+
+        .btn:hover::before {
+            left: 100%;
+        } 
+
+        .btn-primary {
+            background-color: var(--blood-red);
+            color: white;
+            box-shadow: 0 0 15px var(--blood-red), 0 0 30px rgba(255, 0, 51, 0.5);
+        } 
+
+        .btn-primary:hover {
+            background-color: #ff3366;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--blood-red), 0 0 40px rgba(255, 0, 51, 0.7);
+        } 
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--ghost-green);
+            border: 2px solid var(--ghost-green);
+            box-shadow: 0 0 15px var(--ghost-green), 0 0 30px rgba(127, 255, 212, 0.5);
+        } 
+
+        .btn-secondary:hover {
+            background-color: var(--ghost-green);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--ghost-green), 0 0 40px rgba(127, 255, 212, 0.7);
+        } 
+
+        .graveyard {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 10%;
+        } 
+
+        .tombstone {
+            width: 80px;
+            height: 100px;
+            background-color: var(--tombstone);
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            animation: wobble 5s infinite ease-in-out;
+            transform-origin: bottom;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        } 
+
+        .tombstone::before {
+            content: 'RIP';
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.8rem;
+            text-shadow: 0 0 5px var(--blood-red);
+        } 
+
+        .tombstone:nth-child(2) {
+            animation-delay: 1s;
+        } 
+
+        .tombstone:nth-child(3) {
+            animation-delay: 2s;
+        } 
+
+        .tombstone:nth-child(4) {
+            animation-delay: 3s;
+        } 
+
+        /* General sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        } 
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--ghost-green);
+            text-shadow: 0 0 10px var(--ghost-green), 0 0 20px var(--ghost-green);
+            position: relative;
+            letter-spacing: 2px;
+        } 
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--blood-red), transparent);
+            box-shadow: 0 0 10px var(--blood-red);
+        } 
+
+        /* Story */
+        .story-content {
+            background-color: rgba(138, 43, 226, 0.2);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--witch-purple);
+            box-shadow: 0 0 20px rgba(147, 112, 219, 0.5);
+            line-height: 1.6;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        } 
+
+        .story-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, var(--witch-purple) 0%, transparent 70%);
+            opacity: 0.1;
+            z-index: -1;
+        } 
+
+        .story-content p {
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        } 
+
+        /* Tokenomics */
+        .tokenomics-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        } 
+
+        .token-card {
+            background: linear-gradient(145deg, rgba(138, 43, 226, 0.3), rgba(15, 5, 29, 0.7));
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--pumpkin-orange);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 117, 24, 0.3);
+        } 
+
+        .token-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(127, 255, 212, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            z-index: -1;
+        } 
+
+        .token-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(255, 117, 24, 0.5);
+        } 
+
+        .token-percentage {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--ghost-green);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--ghost-green);
+        } 
+
+        .token-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 0 5px var(--pumpkin-orange);
+        } 
+
+        .token-desc {
+            font-size: 1rem;
+            color: var(--text-glow);
+        } 
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        } 
+
+        .feature-card {
+            background-color: rgba(15, 5, 29, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 2px solid var(--spooky-purple);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        } 
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 117, 24, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        } 
+
+        .feature-card:hover::before {
+            opacity: 1;
+        } 
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.5);
+        } 
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--ghost-green);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px var(--ghost-green);
+            animation: bounce 2s infinite;
+        } 
+
+        .feature-title {
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 0 5px var(--blood-red);
+        } 
+
+        .feature-desc {
+            color: var(--text-glow);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        } 
+
+        /* Roadmap */
+        .roadmap-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        } 
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--spooky-purple), var(--pumpkin-orange), var(--blood-red));
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--pumpkin-orange);
+        } 
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+        } 
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 3rem;
+        } 
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+        } 
+
+        .timeline-content {
+            background-color: rgba(138, 43, 226, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--pumpkin-orange);
+            position: relative;
+            box-shadow: 0 5px 15px rgba(255, 117, 24, 0.3);
+            transition: all 0.3s ease;
+        } 
+
+        .timeline-content:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 117, 24, 0.5);
+        } 
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 25px;
+            height: 25px;
+            background-color: var(--ghost-green);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--ghost-green);
+        } 
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -42px;
+        } 
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -42px;
+        } 
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--ghost-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px var(--ghost-green);
+        } 
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 0 0 5px var(--blood-red);
+        } 
+
+        .timeline-desc {
+            color: var(--text-glow);
+            font-size: 1.1rem;
+        } 
+
+        /* Community */
+        .community-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        } 
+
+        .community-desc {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: var(--text-glow);
+            text-shadow: 0 0 5px var(--pumpkin-orange);
+        } 
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        } 
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            background-color: rgba(138, 43, 226, 0.3);
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            border: 2px solid var(--witch-purple);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(147, 112, 219, 0.3);
+        } 
+
+        .social-link:hover {
+            background-color: var(--witch-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(147, 112, 219, 0.5);
+        } 
+
+        .social-icon {
+            font-size: 1.7rem;
+        } 
+
+        /* Footer */
+        footer {
+            background-color: rgba(15, 5, 29, 0.95);
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--pumpkin-orange);
+            margin-top: 3rem;
+            box-shadow: 0 -5px 15px rgba(255, 117, 24, 0.3);
+        } 
+
+        .footer-text {
+            color: var(--text-glow);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        } 
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        } 
+
+        @keyframes blink {
+            0%, 45%, 55%, 100% {
+                height: 25px;
+            }
+            50% {
+                height: 5px;
+            }
+        } 
+
+        @keyframes talk {
+            0%, 70%, 100% {
+                height: 20px;
+            }
+            75%, 95% {
+                height: 5px;
+            }
+        } 
+
+        @keyframes wobble {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(1deg);
+            }
+            75% {
+                transform: rotate(-1deg);
+            }
+        } 
+
+        @keyframes fly {
+            0% {
+                transform: translateX(-100px) translateY(0);
+            }
+            50% {
+                transform: translateX(calc(100vw + 100px)) translateY(-50px);
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(0);
+            }
+        } 
+
+        @keyframes glow {
+            0% {
+                filter: drop-shadow(0 0 10px var(--ghost-green));
+            }
+            100% {
+                filter: drop-shadow(0 0 25px var(--ghost-green));
+            }
+        } 
+
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 15px var(--ghost-green), 0 0 30px var(--ghost-green);
+            }
+            100% {
+                text-shadow: 0 0 20px var(--ghost-green), 0 0 40px var(--ghost-green), 0 0 60px var(--ghost-green);
+            }
+        } 
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        } 
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        } 
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        } 
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        } 
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(15, 5, 29, 0.95);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                border-top: 1px solid var(--pumpkin-orange);
+            } 
+
+            .nav-links.active {
+                display: flex;
+            } 
+
+            .mobile-menu-btn {
+                display: block;
+            } 
+
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .countdown {
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .countdown-number {
+                font-size: 2.2rem;
+            } 
+
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .floating-nav {
+                display: none;
+            }
+            
+            .roadmap-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 70px !important;
+                padding-right: 0 !important;
+            }
+            
+            .timeline-content::after {
+                left: -42px !important;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            } 
+
+            .section-title {
+                font-size: 2.2rem;
+            } 
+
+            .tokenomics-cards, .features-grid {
+                grid-template-columns: 1fr;
+            } 
+
+            .story-content {
+                padding: 1.5rem;
+            }
+        } 
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            } 
+
+            .subtitle {
+                font-size: 1.2rem;
+            } 
+
+            .countdown {
+                flex-wrap: wrap;
+            } 
+
+            .countdown-item {
+                width: 45%;
+                margin-bottom: 1rem;
+            } 
+
+            .section-title {
+                font-size: 1.8rem;
+            } 
+
+            .ghost {
+                width: 120px;
+                height: 150px;
+            } 
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">$CASPER</div>
-        <div class="nav-links" id="navLinks">
-            <a href="#story">The Story</a>
-            <a href="#tokenomics">Tokenomics</a>
-            <a href="#features">Features</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#community">Community</a>
-        </div>
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav> 
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">$CASPER</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#story">The Story</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#features">Features</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#community">Community</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav> 
 
-    <!-- Floating navigation buttons -->
-    <div class="floating-nav">
-        <div class="nav-btn" data-target="hero">
-            <i class="fas fa-ghost"></i>
-        </div>
-        <div class="nav-btn" data-target="story">
-            <i class="fas fa-book"></i>
-        </div>
-        <div class="nav-btn" data-target="tokenomics">
-            <i class="fas fa-chart-pie"></i>
-        </div>
-        <div class="nav-btn" data-target="features">
-            <i class="fas fa-cogs"></i>
-        </div>
-        <div class="nav-btn" data-target="roadmap">
-            <i class="fas fa-map"></i>
-        </div>
-        <div class="nav-btn" data-target="community">
-            <i class="fas fa-users"></i>
-        </div>
-    </div> 
+    <!-- Floating navigation buttons -->
+    <div class="floating-nav">
+        <div class="nav-btn" data-target="hero">
+            <i class="fas fa-ghost"></i>
+        </div>
+        <div class="nav-btn" data-target="story">
+            <i class="fas fa-book"></i>
+        </div>
+        <div class="nav-btn" data-target="tokenomics">
+            <i class="fas fa-chart-pie"></i>
+        </div>
+        <div class="nav-btn" data-target="features">
+            <i class="fas fa-cogs"></i>
+        </div>
+        <div class="nav-btn" data-target="roadmap">
+            <i class="fas fa-map"></i>
+        </div>
+        <div class="nav-btn" data-target="community">
+            <i class="fas fa-users"></i>
+        </div>
+    </div> 
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="halloween-bats">
-            <div class="bat">🦇</div>
-            <div class="bat">🦇</div>
-            <div class="bat">🦇</div>
-            <div class="bat">🦇</div>
-            <div class="bat">🦇</div>
-        </div>
-        
-        <div class="ghost-container">
-            <div class="ghost">
-                <div class="ghost-mouth"></div>
-                <div class="ghost-bottom">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-        <h1>$CASPER</h1>
-        <p class="subtitle">Ghost of the Degens</p>
-        
-        <div class="countdown">
-            <div class="countdown-item">
-                <div class="countdown-number" id="days">00</div>
-                <div class="countdown-label">Days</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="hours">00</div>
-                <div class="countdown-label">Hours</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="minutes">00</div>
-                <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="seconds">00</div>
-                <div class="countdown-label">Seconds</div>
-            </div>
-        </div>
-        
-        <div class="cta-buttons">
-            <a href="#" class="btn btn-primary">Buy Now</a>
-            <a href="#" class="btn btn-secondary">Join the Cult</a>
-        </div>
-        
-        <div class="graveyard">
-            <div class="tombstone"></div>
-            <div class="tombstone"></div>
-            <div class="tombstone"></div>
-            <div class="tombstone"></div>
-        </div>
-    </section> 
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="halloween-bats">
+            <div class="bat">🦇</div>
+            <div class="bat">🦇</div>
+            <div class="bat">🦇</div>
+            <div class="bat">🦇</div>
+            <div class="bat">🦇</div>
+        </div>
+        
+        <div class="ghost-container">
+            <div class="ghost">
+                <div class="ghost-mouth"></div>
+                <div class="ghost-bottom">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <h1>$CASPER</h1>
+        <p class="subtitle">Ghost of the Degens</p>
+        
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">Buy Now</a>
+            <a href="#" class="btn btn-secondary">Join the Cult</a>
+        </div>
+        
+        <div class="graveyard">
+            <div class="tombstone"></div>
+            <div class="tombstone"></div>
+            <div class="tombstone"></div>
+            <div class="tombstone"></div>
+        </div>
+    </section> 
 
-    <!-- The Story -->
-    <section id="story" class="fade-in">
-        <h2 class="section-title">The Story</h2>
-        <div class="story-content">
-            <p>In the depths of the Solana blockchain, where transactions flow like spirits in the night, $CASPER was born, the ghost of the degens.</p>
-            <p>Once a humble token, but a failed transaction condemned it to wander eternally through liquidity pools, seeking revenge against rug-pullers and bot-traders that infest the ecosystem.</p>
-            <p>Now, $CASPER has returned with a purpose: to gather all abandoned degens and form the spookiest cult in the cryptosphere. Together, we will embark on an adventure full of mysterious airdrops, staking rituals and encounters with ghostly NFTs.</p>
-            <p>Do you have what it takes to join our cult and face the mysteries that await in the blockchain?</p>
-        </div>
-    </section> 
+    <!-- The Story -->
+    <section id="story" class="fade-in">
+        <h2 class="section-title">The Story</h2>
+        <div class="story-content">
+            <p>In the depths of the Solana blockchain, where transactions flow like spirits in the night, $CASPER was born, the ghost of the degens.</p>
+            <p>Once a humble token, but a failed transaction condemned it to wander eternally through liquidity pools, seeking revenge against rug-pullers and bot-traders that infest the ecosystem.</p>
+            <p>Now, $CASPER has returned with a purpose: to gather all abandoned degens and form the spookiest cult in the cryptosphere. Together, we will embark on an adventure full of mysterious airdrops, staking rituals and encounters with ghostly NFTs.</p>
+            <p>Do you have what it takes to join our cult and face the mysteries that await in the blockchain?</p>
+        </div>
+    </section> 
 
-    <!-- Tokenomics -->
-    <section id="tokenomics" class="fade-in">
-        <h2 class="section-title">Tokenomics</h2>
-        <div class="tokenomics-cards">
-            <div class="token-card">
-                <div class="token-percentage">50%</div>
-                <h3 class="token-title">Fair Launch</h3>
-                <p class="token-desc">Fair distribution for the community. No whales, no tricks.</p>
-            </div>
-            <div class="token-card">
-                <div class="token-percentage">20%</div>
-                <h3 class="token-title">Rituals & Airdrops</h3>
-                <p class="token-desc">Rewards for the most active cult members.</p>
-            </div>
-            <div class="token-card">
-                <div class="token-percentage">15%</div>
-                <h3 class="token-title">NFT + Ghost Mode</h3>
-                <p class="token-desc">Development of ghost NFTs and exclusive features.</p>
-            </div>
-            <div class="token-card">
-                <div class="token-percentage">10%</div>
-                <h3 class="token-title">Ghostly Liquidity</h3>
-                <p class="token-desc">Locked LP to ensure token stability.</p>
-            </div>
-            <div class="token-card">
-                <div class="token-percentage">5%</div>
-                <h3 class="token-title">Secret Circle</h3>
-                <p class="token-desc">Team and developers to keep the project alive.</p>
-            </div>
-        </div>
-    </section> 
+    <!-- Tokenomics -->
+    <section id="tokenomics" class="fade-in">
+        <h2 class="section-title">Tokenomics</h2>
+        <div class="tokenomics-cards">
+            <div class="token-card">
+                <div class="token-percentage">50%</div>
+                <h3 class="token-title">Fair Launch</h3>
+                <p class="token-desc">Fair distribution for the community. No whales, no tricks.</p>
+            </div>
+            <div class="token-card">
+                <div class="token-percentage">20%</div>
+                <h3 class="token-title">Rituals & Airdrops</h3>
+                <p class="token-desc">Rewards for the most active cult members.</p>
+            </div>
+            <div class="token-card">
+                <div class="token-percentage">15%</div>
+                <h3 class="token-title">NFT + Ghost Mode</h3>
+                <p class="token-desc">Development of ghost NFTs and exclusive features.</p>
+            </div>
+            <div class="token-card">
+                <div class="token-percentage">10%</div>
+                <h3 class="token-title">Ghostly Liquidity</h3>
+                <p class="token-desc">Locked LP to ensure token stability.</p>
+            </div>
+            <div class="token-card">
+                <div class="token-percentage">5%</div>
+                <h3 class="token-title">Secret Circle</h3>
+                <p class="token-desc">Team and developers to keep the project alive.</p>
+            </div>
+        </div>
+    </section> 
 
-    <!-- Features -->
-    <section id="features" class="fade-in">
-        <h2 class="section-title">Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-ghost"></i>
-                </div>
-                <h3 class="feature-title">Trick or Treat Airdrops</h3>
-                <p class="feature-desc">Surprise events where holders can receive unexpected rewards... or scares.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-fire"></i>
-                </div>
-                <h3 class="feature-title">Staking Ritual</h3>
-                <p class="feature-desc">Lock your tokens and join our rituals to obtain supernatural rewards.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-mask"></i>
-                </div>
-                <h3 class="feature-title">Ghost NFTs</h3>
-                <p class="feature-desc">Collect unique ghosts with different rarities and special abilities.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-eye-slash"></i>
-                </div>
-                <h3 class="feature-title">Ghost Mode</h3>
-                <p class="feature-desc">Access exclusive features and secret content visible only to true cult members.</p>
-            </div>
-        </div>
-    </section> 
+    <!-- Features -->
+    <section id="features" class="fade-in">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-ghost"></i>
+                </div>
+                <h3 class="feature-title">Trick or Treat Airdrops</h3>
+                <p class="feature-desc">Surprise events where holders can receive unexpected rewards... or scares.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 class="feature-title">Staking Ritual</h3>
+                <p class="feature-desc">Lock your tokens and join our rituals to obtain supernatural rewards.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mask"></i>
+                </div>
+                <h3 class="feature-title">Ghost NFTs</h3>
+                <p class="feature-desc">Collect unique ghosts with different rarities and special abilities.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-eye-slash"></i>
+                </div>
+                <h3 class="feature-title">Ghost Mode</h3>
+                <p class="feature-desc">Access exclusive features and secret content visible only to true cult members.</p>
+            </div>
+        </div>
+    </section> 
 
-    <!-- Roadmap -->
-    <section id="roadmap" class="fade-in">
-        <h2 class="section-title">Roadmap</h2>
-        <div class="roadmap-timeline">
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-date">Official Launch</div>
-                    <h3 class="timeline-title">Token Launch</h3>
-                    <p class="timeline-desc">Official launch of the $CASPER token on Solana.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                                        <div class="timeline-date">November 2025</div>
+    <!-- Roadmap -->
+    <section id="roadmap" class="fade-in">
+        <h2 class="section-title">Roadmap</h2>
+        <div class="roadmap-timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Official Launch</div>
+                    <h3 class="timeline-title">Token Launch</h3>
+                    <p class="timeline-desc">Official launch of the $CASPER token on Solana.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">November 2025</div>
                     <h3 class="timeline-title">Community Building</h3>
                     <p class="timeline-desc">Grow our cult community and establish presence.</p>
                 </div>
@@ -1197,9 +1197,11 @@
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
 
         // Countdown timer
         function updateCountdown() {
@@ -1207,29 +1209,39 @@
             const now = new Date().getTime();
             const timeLeft = targetDate - now;
 
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                // Safe element updates
+                const daysEl = document.getElementById('days');
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
+
+                if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+                if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+            }
         }
 
         // Fade-in animations
         const fadeElements = document.querySelectorAll('.fade-in');
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+        if (fadeElements.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
 
-        fadeElements.forEach(el => observer.observe(el));
+            fadeElements.forEach(el => observer.observe(el));
+        }
 
         // Floating navigation
         const navButtons = document.querySelectorAll('.nav-btn');
@@ -1250,4 +1262,4 @@
         updateCountdown(); // Run immediately
     </script>
 </body>
-</html>
+  </html>
