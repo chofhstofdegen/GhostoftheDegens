@@ -1141,5 +1141,113 @@
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">Phase 1</div>
-           &nb
+                                        <div class="timeline-date">November 2025</div>
+                    <h3 class="timeline-title">Community Building</h3>
+                    <p class="timeline-desc">Grow our cult community and establish presence.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">December 2025</div>
+                    <h3 class="timeline-title">NFT Collection</h3>
+                    <p class="timeline-desc">Launch of exclusive Ghost NFT collection.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">January 2026</div>
+                    <h3 class="timeline-title">Ghost Mode</h3>
+                    <p class="timeline-desc">Activate exclusive features for holders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section id="community" class="fade-in">
+        <h2 class="section-title">Join the Cult</h2>
+        <div class="community-content">
+            <p class="community-desc">Become part of the spookiest community in crypto</p>
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter social-icon"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-telegram social-icon"></i>
+                    <span>Telegram</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-discord social-icon"></i>
+                    <span>Discord</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">$CASPER - Ghost of the Degens</p>
+        <p class="footer-text">Enter at your own risk... 👻</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Countdown timer
+        function updateCountdown() {
+            const targetDate = new Date('2024-12-31T23:59:59').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Floating navigation
+        const navButtons = document.querySelectorAll('.nav-btn');
+        
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Run immediately
+    </script>
+</body>
+</html>
